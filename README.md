@@ -1,6 +1,6 @@
 # Dependencies
-* Install python, pytorch. We use Python 3.9.7, Pytorch 1.10.0
-* If you plan to use GPU, install CUDA.
+Pytorch == 1.9.0 scikit-learn == 1.0.2
+
 # Dataset
 We made our experiments on MIMIC-III dataset. In order to access the dataset, please refer to https://mimic.physionet.org/gettingstarted/access/ .
 
