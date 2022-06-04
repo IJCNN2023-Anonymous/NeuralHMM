@@ -6,4 +6,4 @@ We made our experiments on MIMIC-III dataset. In order to access the dataset, pl
 
 After downloading MIMIC-III, you can use the following github repo for the pre-processing: https://doi.org/10.5281/zenodo.1306527 .
 # Main Entrance 
-train.py contain training code. test.py contain evaluation code.
+train.py contains training code. test.py contains evaluation code.
