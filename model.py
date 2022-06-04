@@ -49,9 +49,9 @@ class InferenceNet(nn.Module):
         return proposed_mean, proposed_std
 
 
-class MdnPredictor(nn.Module):
+class Predictor(nn.Module):
     """
-        作用于health risk prediction的预测器
+        Health Risk Prediction
     """
     def __init__(self, h_dim, s_dim, seq_len, out_dim, n_gaussian):
         super(MdnPredictor, self).__init__()
@@ -104,7 +104,7 @@ class MdnPredictor(nn.Module):
 
 class RiskPre(nn.Module):
     """
-        整个网络for performing health risk prediction tasks
+        The Proposed Model
     """
     def __init__(self, input_dim, h_dim, s_dim, gru_dim, gru_num_layers, gru_dropout_rate, hidden_dim_, out_dim, n_gaussian, device):
         super(RiskPre, self).__init__()
@@ -139,7 +139,6 @@ class RiskPre(nn.Module):
         # 2.Inference Network
         h_q_0 = self.h_q_0.expand(batch_size, self.h_dim)
         for t in range(0, t_max):
-            # Z0是初始化生成的，hmm直接从求解Z1开始
             if t == 0:
                 h_prev_all_q = h_q_0.unsqueeze(1)
                 continue
@@ -148,7 +147,7 @@ class RiskPre(nn.Module):
             ht_q = reparameterization(mu_q, var_q)
             h_prev_all_q = torch.cat((h_prev_all_q, ht_q.unsqueeze(1)), 1)
 
-        # 3.MDN Predictor
+        # 3.Predictor
         sample_c = self.predictor(h_prev_all_q, s)
 
         return sample_c, h_gru, mu_q, var_q
@@ -222,7 +221,7 @@ class Emission(nn.Module):
             inputs :
                 h_t : input hidden states at time t ( B x h_dim )
             returns :
-                xt_recon : 从emission distribution中采样得到的表示
+                xt_recon : Obtained by sampling from the emission distribution (B x num_class)
                 proposed_mean : the mean of the emission distribution ( B x out_dim )
                 proposed_std :  the variance of the emission distribution ( B x out_dim )
         """
@@ -236,7 +235,7 @@ class Emission(nn.Module):
 
 class NeuralHmm(nn.Module):
     """
-        一个post-hoc可解释模型，用于对GRU的隐藏状态进行解释
+        post-hoc interpretability
     """
     def __init__(self, h_dim, s_dim, emission_dim, out_dim, transition_dim_, transition_dim, device):
         super(NeuralHmm, self).__init__()
@@ -258,7 +257,7 @@ class NeuralHmm(nn.Module):
                 s : time-invariant features ( B x s_dim )
                 h_gru : a series of hidden states obtained from GRU ( B x T x gru_dim )
             returns :
-                x_recon : 从emission distribution中采样得到的表示 ( B x num_class )
+                x_recon : Obtained by sampling from the emission distribution (B x num_class)
                 x : time-variant features ( B x T x input_dim )
                 mu_p_seq : the mean of the state transition distribution ( B x T x h_dim )
                 var_p_seq : the variance of the state transition distribution ( B x T x h_dim )
@@ -277,7 +276,6 @@ class NeuralHmm(nn.Module):
 
         # 2.Neural hmm
         for t in range(0, t_max):
-            # Z0是初始化生成的，hmm直接从求解Z1开始
             if t == 0:
                 x_recon[:, t, :] = x[:, 0, :]
                 mu_p_seq[:, t, :] = mu_p_0.squeeze(1)
