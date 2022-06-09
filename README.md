@@ -1,5 +1,5 @@
 # Dependencies
-pytorch == 1.10.0 scikit-learn == 1.0.2
+pytorch == 1.10.0 scikit-learn == 1.0.2 numpy == 1.20.3
 
 # Dataset
 We made our experiments on MIMIC-III dataset. In order to access the dataset, please refer to https://mimic.physionet.org/gettingstarted/access/ .
