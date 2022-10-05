@@ -155,8 +155,8 @@ Features from MIMIC-III and eICU used in predictions are shown as below.
 	</tr>
 </table>
 
-After downloading MIMIC-III, you can use the following github repo for the pre-processing: https://doi.org/10.5281/zenodo.1306527 . \
-After downloading eICU, you can use the following github repo for the pre-processing: https://github.com/mostafaalishahi/eICU_Benchmark_updated. 
+After downloading MIMIC-III, you can use the following link for the pre-processing: https://doi.org/10.5281/zenodo.1306527 . \
+After downloading eICU, you can use the following link for the pre-processing: https://github.com/mostafaalishahi/eICU_Benchmark_updated. 
 
 # Main Entrance 
 train.py contains training code. test.py contains evaluation code.
