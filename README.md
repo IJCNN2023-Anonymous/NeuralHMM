@@ -3,7 +3,8 @@ pytorch == 1.10.0 scikit-learn == 1.0.2 numpy == 1.20.3
 
 # Dataset
 We made our experiments on the MIMIC-III and eICU datasets. In order to access the datasets, please refer to 
-https://mimic.physionet.org/gettingstarted/access/  and  https://eicu-crd.mit.edu/gettingstarted/access/. \
+https://mimic.physionet.org/gettingstarted/access/  and  https://eicu-crd.mit.edu/gettingstarted/access/. 
+
 
 <table>
 	<tr>
