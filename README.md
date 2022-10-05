@@ -23,9 +23,9 @@ https://mimic.physionet.org/gettingstarted/access/  and  https://eicu-crd.mit.ed
 	    <td>Capillary refill rate</td>
 	    <td>categorical</td>
 		  <td>99.78</td>
-		  <td></td>
-	    <td></td>
-      <td></td>
+		  <td>-</td>
+	    <td>-</td>
+      <td>-</td>
 	</tr>
   <tr>
 	    <td>Diastolic blood pressure</td>
