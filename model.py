@@ -216,7 +216,7 @@ class Emission(nn.Module):
 
 class NeuralHmm(nn.Module):
     """
-        transparency and interpretability
+        Transparency and interpretability
     """
     def __init__(self, h_dim, s_dim, emission_dim, x_dim, transition_dim_, transition_dim, device):
         super(NeuralHmm, self).__init__()
